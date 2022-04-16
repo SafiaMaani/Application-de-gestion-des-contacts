@@ -1,0 +1,65 @@
+header {
+    background-color: blueviolet;
+    height: 80px;
+}
+
+.navLink {
+    color: rgb(99, 2, 190);
+}
+
+nav {
+    width: 90%;
+}
+
+h1 {
+    color: rgb(99, 2, 190);
+}
+
+.cadre1 {
+    height: 150px;
+    background-color: rgb(184, 108, 255);
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.cadre2 {
+    height: 100px;
+    background-color: rgb(99, 2, 190);
+    border-radius: 10px;
+}
+
+.cadre1>p {
+    height: 30px;
+    margin-top: 20px;
+}
+
+.cadre2:hover {
+    background-color: rgb(64, 0, 124);
+}
+
+.svg {
+    height: 100%;
+    width: 100%;
+}
+
+.botona {
+    background-color: rgb(99, 2, 190);
+}
+
+.botona:hover {
+    background-color: rgb(171, 119, 219);
+}
+
+.info1,
+.info2,
+.info3 {
+    height: 33%;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: rgb(198, 145, 248);
+}
+
+.profile {
+    border-radius: 15px !important;
+    border-color: blueviolet !important;
+}
