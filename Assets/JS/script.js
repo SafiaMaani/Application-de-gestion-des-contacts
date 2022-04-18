@@ -4,6 +4,9 @@ const mdp = document.getElementById('mdp')
 const mdp2 = document.getElementById('mdp2')
 const regEx = /^[a-zA-Z0-9]+$/
 
+// const btnCnx = document.getElementById('btnCnx')
+// const btnDcnx = document.getElementById('btnDcnx')
+
 const errorMessage_1 = document.getElementById('error1');
 const errorMessage_2 = document.getElementById('error2');
 const errorMessage_3 = document.getElementById('error3');
@@ -68,3 +71,7 @@ function validation() {
     }
     return true
 }
+
+// btnCnx.addEventListener('click', function() {
+
+// })
