@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    <?php include 'Assets/INCLUDES/navBar.php'; ?>
+    <?php 
+    include_once 'Assets/INCLUDES/navBar.php'; 
+    ?>
 
     <section class="d-flex align-items-center p-5">
         <div class="w-50">

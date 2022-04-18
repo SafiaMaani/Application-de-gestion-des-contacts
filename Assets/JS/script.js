@@ -29,6 +29,7 @@ function validation() {
         return false
     } else {
         nom.style.borderColor = 'green'
+        errorMessage_1.textContent = ''
     }
 
     //MOT DE PASSE not EMPTY
@@ -43,6 +44,7 @@ function validation() {
         return false
     } else {
         mdp.style.borderColor = 'green'
+        errorMessage_2.textContent = ''
     }
 
     //MOT DE PASSE (confirmation)
@@ -56,6 +58,7 @@ function validation() {
         return false
     } else {
         mdp2.style.borderColor = 'green'
+        errorMessage_3.textContent = ''
     }
     //Psw1 == Psw2
     if (mdp.value != mdp2.value) {

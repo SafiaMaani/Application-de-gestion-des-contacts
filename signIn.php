@@ -1,3 +1,15 @@
+<?php
+include "Assets/INCLUDES/classes.php";
+session_start();
+
+if(isset($_SESSION['id'])){
+    header("location: profil.php");
+
+}else{
+    $db = new Crud();
+    $db->signIn();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -174,19 +186,26 @@
             </svg>
         </div>
         <div class="w-50 d-flex align-items-center justify-content-center">
-            <form class="d-flex flex-column w-75">
+            <form onsubmit="return(validation())" id="form" method="post" action="#" class="d-flex flex-column w-75">
+
                 <h1 class="text-center p-3">Connexion</h1>
+
                 <label class="mb-1">Nom</label>
-                <input class="mb-3" type="text">
+                <input class="mb-1" type="text" id="nom" name="nom">
+                <div id="error1" class="text-danger mb-1"></div>
+
 
                 <label class="mb-1">Mot de passe</label>
-                <input class="mb-3" type="password">
+                <input class="mb-1" type="password" id="mdp" name="password">
+                <div id="error2" class="text-danger mb-1"></div>
 
-                <button type="button" class="botona btn btn-secondary mb-4">Se connecter</button>
+                <button name="submit" type="submit" class="botona btn btn-secondary mb-4 mt-3">Se connecter</button>
                 <p>Vous avez pas de compte ? <a href="signUp.php" class="text-decoration-none">Inscrivez-vous</a></p>
             </form>
         </div>
     </section>
+
+    <script src="Assets/JS/script.js"></script>
 </body>
 
 </html>
