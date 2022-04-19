@@ -1,31 +1,18 @@
 <?php
-include 'conDB.php';
+
+include 'Connexion.php';
 
 class SignUp extends Connexion{
 
-    public function insertUser($nom , $password)
+    public function register($nom , $password)
 	{
-		$sql = "INSERT INTO $this->tableUsers(nom , password) VALUES('$nom', '$password')";
-		$query = $this->conn->query($sql);  
+		$sql = "INSERT INTO $this->tableUsers (nom , password) VALUES('$nom', '$password')";
+        $this->conn->query($sql); 
 
-        // var_dump($sql);
-        
+		// I have to destroy the session when the user sign up (when he will be redirected to the sign in page if there is already a session he will access to an other user profil)
+		session_start();
+		session_unset(); //vider les variables de sessions
+		session_destroy(); //detruire la session 
 	} 
-	
-	public function signUp(){
-
-		// if (isset($_POST['submit'])) {
-	
-		// 	$nom = $_POST['nom'];
-		// 	$password = $_POST['password'];
-
-        //     echo 'hello';
-				
-		// 	// $newUser = new SignUp($nom , $password);
-		
-		// 	// $query = $newUser->insertUser($nom, $password);
-		
-		// 	// echo "<script>alert('Votre inscription a été enregistrée avec succés');</script>";
-		// }
-	}
 }
+

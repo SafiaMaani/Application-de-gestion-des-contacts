@@ -1,19 +1,16 @@
-<?php 
+<?php
 include 'Assets/INCLUDES/signUp.php';
+
 if (isset($_POST['submit'])) {
-	
+
     $nom = $_POST['nom'];
     $password = $_POST['password'];
-
-    echo 'hello';
-    
+     
     $newUser = new SignUp();
-    // $sql = $newUser->insertUser($nom, $password);
-
-    echo $newUser->insertUser($nom , $password);
-    // $newUser = new SignUp($nom , $password);
+    $newUser->register($nom, $password);
 
 
+    header('Location: signIn.php');
     echo "<script>alert('Votre inscription a été enregistrée avec succés');</script>";
 }
 
@@ -34,10 +31,10 @@ if (isset($_POST['submit'])) {
 
     <section class="d-flex">
         <div class="w-50 d-flex justify-content-center">
-        <img class="w-75" src="Assets/SVG/Mobile login-pana.svg" alt="">
+            <img class="w-75" src="Assets/SVG/Mobile login-pana.svg" alt="">
         </div>
         <div class="w-50 d-flex align-items-center justify-content-center">
-            <form onsubmit="return(validation())" id="form" method="POST"  class="d-flex flex-column w-75">
+            <form onsubmit="return(validation())" id="form" method="POST" class="d-flex flex-column w-75">
 
                 <h1 class="text-center p-3">Inscription</h1>
 

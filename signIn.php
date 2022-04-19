@@ -14,6 +14,8 @@ if(isset($_SESSION['id'])){
 
         $verifierUser = new Login();
         $verifierUser->signIn($nom ,$password);
+       
+        header('Location: profil.php');
     }
     
 

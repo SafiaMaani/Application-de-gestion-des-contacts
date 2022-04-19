@@ -1,10 +1,10 @@
 <?php
-include 'conDB.php';
+include 'Connexion.php';
 
 class Login extends Connexion{
 
-    public function signIn($nom , $password){
-		
+    public function signIn($nom , $password)
+    {	
         $sql = "SELECT * FROM users WHERE nom = '$nom' AND password = '$password'";
         $query = $this->conn->query($sql);
         
@@ -20,13 +20,11 @@ class Login extends Connexion{
             $_SESSION['id'] = $row['id'] ;
             $_SESSION['nom'] = $row['nom'] ;
             $_SESSION['password'] = $row['password'] ;
-
-            // header('Location : ../../profil.php');
             }
         }
         else{
-            echo "<script>alert('les idantifiants que vous avez entré sont incorrectes');</script>";
+            echo "<script>alert('les identifiants que vous avez entré sont incorrectes');</script>";
         }
         
-}
+    }
 }

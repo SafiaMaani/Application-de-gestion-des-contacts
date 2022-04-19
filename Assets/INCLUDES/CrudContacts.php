@@ -1,27 +1,29 @@
 <?php
-include 'conDB.php';
+include 'Connexion.php';
 
-class User extends Connexion{
+class Contacts extends Connexion{
 	
-    public function affichageUser()
-	{
-		$query = "SELECT * FROM $this->tableUsers";
-		$sql = $this->conn->query($query);
+    public function addContact($nom , $telephone , $email , $adress){
+
+        $sql = "INSERT INTO $this->tableContacts (nom, telephone, email, adress) VALUES('$nom', '$telephone' , '$email' , '$adress')";
+        $this->conn->query($sql);
+    }
+
+    // public function affichageUser()
+	// {
+	// 	$query = "SELECT * FROM $this->tableUsers";
+	// 	$sql = $this->conn->query($query);
 		
-		$data = [];
-		if ($sql->num_rows > 0) {
-			while ($row = $sql->fetch_assoc()) {
-				$data[] = $row;
-			}
-			return $data;
-		}else{
-			return false;
-		}
-	}
-
-}
-
-class Contact{
+	// 	$data = [];
+	// 	if ($sql->num_rows > 0) {
+	// 		while ($row = $sql->fetch_assoc()) {
+	// 			$data[] = $row;
+	// 		}
+	// 		return $data;
+	// 	}else{
+	// 		return false;
+	// 	}
+	// }
 
 }
 

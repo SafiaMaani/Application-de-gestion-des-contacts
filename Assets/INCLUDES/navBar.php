@@ -9,9 +9,7 @@ if (isset($_SESSION['id'])) {
     $contacts ='';
     $btn = '<a id="btnCnx" href="signIn.php" class="navLink text-decoration-none "><button type="button" class="btn border border-2 rounded-pill">Se connecter</a>';
 }
-
 ?>
-
 
 <header class="d-flex justify-content-center align-items-center">
     <nav class="navbar bg-white  h-75 rounded-pill">
