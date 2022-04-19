@@ -3,7 +3,7 @@
 if (isset($_SESSION['id'])) {
     $name = $_SESSION['nom'];
     $contacts = '<a href="contacts.php" class="navLink navbar-brand">Contacts</a>';
-    $btn = '<a id="btnDcnx" href="deconnexion.php"  class="navLink text-decoration-none "><button type="button" class="btn border border-2 rounded-pill">Deconnexion</a>';
+    $btn = '<a id="btnDcnx" href="deconnexion.php"  class="navLink text-decoration-none "><button type="button" class="btn border border-2 rounded-pill">Se déconncter</a>';
 } else {
     $name = '';
     $contacts ='';

@@ -16,7 +16,9 @@ if (empty($_SESSION['id'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <link href="https://cdn.staticaly.com/gh/hung1001/font-awesome-pro/4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="Assets/CSS/style.css">
+
         <title>Profile</title>
     </head>
 
@@ -25,15 +27,14 @@ if (empty($_SESSION['id'])) {
 
         <section class="d-flex w-100 text-white p-5">
             <div class="w-75 border border-5 p-5 profile">
-                <h1>Bienvenue Mlle <?php echo $_SESSION['nom']; ?></h1>
+                <h1>Bienvenue <?php echo $_SESSION['nom']; ?></h1>
                 <div class="d-flex">
                     <img class="w-25" src="Assets/SVG/Profile_pic-pana.svg" alt="">
 
                     <div class="w-75 text-center">
-                        <div class="info1 bg-dark">Nom d'utilisateur : <?php echo $_SESSION['nom']; ?></div>
-                        <div class="info2">Date d'inscription : </div>
-                        <div class="info3">Dernière Connexion : </div>
-
+                        <div class="info1">Nom d'utilisateur : <?php echo $_SESSION['nom']; ?></div>
+                        <div class="info2">Date d'inscription : <?php echo $_SESSION['date_inscription']; ?></div>
+                        <div class="info3">Dernière Connexion : <?php echo $_SESSION['derCnx']; ?></div>
                     </div>
                 </div>
             </div>
@@ -65,7 +66,7 @@ if (empty($_SESSION['id'])) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="" class="d-flex flex-column w-100">
+                            <form method="POST" class="d-flex flex-column w-100">
 
                                 <label class="mb-1">Nom</label>
                                 <input id="nom" class="mb-1" type="text" name="nom">
@@ -80,12 +81,29 @@ if (empty($_SESSION['id'])) {
                                 <!-- <div id="error1" class="text-danger mb-1"></div> -->
 
                                 <label class="mb-1">Adresse</label>
-                                <input id="adresse" class="mb-1" type="text" name="adresse">
+                                <input id="adresse" class="mb-1" type="text" name="adress">
                                 <!-- <div id="error1" class="text-danger mb-1"></div> -->
+                                <div class="modal-footer">
+                                    <button type="submit" name="addContact" class="btn btn-primary" data-bs-dismiss="modal">Ajouter le contact </button>
+                                </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Enregistrer</button>
+                            <?php
+                            require_once 'Assets/INCLUDES/CrudContacts.php';
+
+                            if (isset($_POST['addContact'])) {
+
+                                $nom = $_POST['nom'];
+                                $telephone = $_POST['telephone'];
+                                $email = $_POST['email'];
+                                $adress = $_POST['adress'];
+                                $id = $_SESSION['id'];
+
+                                $newContact = new Contacts();
+                                $newContact->addContact($nom, $telephone, $email, $adress, $id);
+
+                                echo "<script>alert('Votre nouveau contact a été ajouté avec succés :D');</script>";
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -93,42 +111,46 @@ if (empty($_SESSION['id'])) {
 
             <!-- Modal LISTE CONTACTS -->
             <div class="modal fade text-dark" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog " style="max-width: 800px !important;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title text-primary" id="staticBackdropLabel">Votre liste de contacts :</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <!-- <h1>A FAIRE</h1> -->
-                            <!-- La liste de contacts ss forme d'un tableau donnant la possibilité de supprimer ou modifier le contact -->
-                            <table class="table">
+                            <table class='table table-responsive'>
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
+                                        <th>Nom</th>
+                                        <th>Téléphone</th>
+                                        <th>@email</th>
+                                        <th>Adresse</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td colspan="2">Larry the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
+                                    <?php
+                                    require_once 'Assets/INCLUDES/CrudContacts.php';
+
+                                    $id = $_SESSION['id'];
+                                    $voirContacts = new  Contacts();
+                                    $contacts = $voirContacts->affichageContacts($id);
+                                    
+                                    if($contacts){
+                                        foreach ($contacts as $contact) {
+                                            echo "<tr>";
+                                            echo "<td>" . $contact['nom'];
+                                            echo "<td>" . $contact['telephone'];
+                                            echo "<td>" . $contact['email'];
+                                            echo "<td>" . $contact['adress'];
+                                            echo "<td>" . '<a href= "Assets/INCLUDES/delete.php?id='.$contact["id_contact"].' "><i class="fas fa-trash text-info"></i></a>';
+                                            echo "<td>" . '<a href= "Assets/INCLUDES/edit.php?id='.$contact["id_contact"].' "><i class="fas fa-edit text-info"></i></a>';
+                                            echo "</tr>";
+                                        }
+                                        "</tbody>
+                                    </table>";
+                                    }   
+                                    ?>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -139,7 +161,6 @@ if (empty($_SESSION['id'])) {
                 </div>
             </div>
         </section>
-
     </body>
 
     </html>

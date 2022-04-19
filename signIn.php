@@ -11,7 +11,7 @@ if(isset($_SESSION['id'])){
     if (isset($_POST['submit'])) {
         $nom = $_POST['nom'];
         $password = $_POST['password'];
-
+        
         $verifierUser = new Login();
         $verifierUser->signIn($nom ,$password);
        

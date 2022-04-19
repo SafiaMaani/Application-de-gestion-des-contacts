@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 
 
     header('Location: signIn.php');
-    echo "<script>alert('Votre inscription a été enregistrée avec succés');</script>";
+    // echo "<script>alert('Votre inscription a été enregistrée avec succés');</script>";
 }
 
 ?>
