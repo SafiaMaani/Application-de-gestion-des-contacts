@@ -70,19 +70,15 @@ if (empty($_SESSION['id'])) {
 
                                 <label class="mb-1">Nom</label>
                                 <input id="nom" class="mb-1" type="text" name="nom">
-                                <!-- <div id="error1" class="text-danger mb-1"></div> -->
 
                                 <label class="mb-1">Teléphone</label>
                                 <input id="telephone" class="mb-1" type="text" name="telephone">
-                                <!-- <div id="error1" class="text-danger mb-1"></div> -->
 
                                 <label class="mb-1">Email</label>
                                 <input id="email" class="mb-1" type="text" name="email">
-                                <!-- <div id="error1" class="text-danger mb-1"></div> -->
 
                                 <label class="mb-1">Adresse</label>
                                 <input id="adresse" class="mb-1" type="text" name="adress">
-                                <!-- <div id="error1" class="text-danger mb-1"></div> -->
                                 <div class="modal-footer">
                                     <button type="submit" name="addContact" class="btn btn-primary" data-bs-dismiss="modal">Ajouter le contact </button>
                                 </div>
@@ -101,7 +97,7 @@ if (empty($_SESSION['id'])) {
                                 $newContact = new Contacts();
                                 $newContact->addContact($nom, $telephone, $email, $adress, $id);
 
-                                echo "<script>alert('Votre nouveau contact a été ajouté avec succés :D');</script>";
+                                echo "<script>alert('Votre nouveau contact a été ajouté avec succés :D')</script>";
                             }
                             ?>
                         </div>
@@ -142,8 +138,8 @@ if (empty($_SESSION['id'])) {
                                             echo "<td>" . $contact['telephone'];
                                             echo "<td>" . $contact['email'];
                                             echo "<td>" . $contact['adress'];
-                                            echo "<td>" . '<a href= "Assets/INCLUDES/delete.php?id='.$contact["id_contact"].' "><i class="fas fa-trash text-info"></i></a>';
-                                            echo "<td>" . '<a href= "Assets/INCLUDES/edit.php?id='.$contact["id_contact"].' "><i class="fas fa-edit text-info"></i></a>';
+                                            echo "<td>" . '<a href= "Assets/INCLUDES/delete.php?id_contact='.$contact["id_contact"].' "><i class="fas fa-trash text-info"></i></a>';
+                                            echo "<td>" . '<a href= "Assets/INCLUDES/edit.php?id_contact='.$contact["id_contact"].' "><i class="fas fa-edit text-info"></i></a>';
                                             echo "</tr>";
                                         }
                                         "</tbody>

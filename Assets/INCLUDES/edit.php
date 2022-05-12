@@ -4,7 +4,7 @@ require_once "CrudContacts.php";
 
 if (isset($_POST['edit'])) {
 
-    $id_contact = $_GET['id'] ;
+    $id_contact = $_GET['id_contact'] ;
 
     $nom = $_POST['nom'] ;
     $telephone = $_POST['telephone'] ;
@@ -14,7 +14,6 @@ if (isset($_POST['edit'])) {
     $modifierContact = new Contacts();
     $modifierContact->modifierContact($nom, $telephone, $email, $adress, $id_contact);
     header('Location: ../../profil.php');
-
 }
 ?>
 <!DOCTYPE html>
@@ -31,8 +30,6 @@ if (isset($_POST['edit'])) {
 <body>
     <div class="container d-flex justify-content-center">
         <form method="POST" class="d-flex flex-column align-items-center bg-light w-50 mt-5">
-
-            <!-- <input id="nom" class="w-75" type="text" name="id_contact"> -->
 
             <div class="d-flex w-75 mt-5 mb-3">
                 <label class="w-25">Nom</label>

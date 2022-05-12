@@ -12,17 +12,14 @@ class Login extends Connexion{
 
             $row = $query->fetch_array();
 
-            $row['id'] ;
-            $row['nom'] ;
-            $row['password'] ;
-            $row['date_inscription'];
-
             if($nom = $row['nom'] && $password = $row['password']){
             $_SESSION['id'] = $row['id'] ;
             $_SESSION['nom'] = $row['nom'] ;
             $_SESSION['password'] = $row['password'] ;
             $_SESSION['date_inscription'] = $row['date_inscription'];
             $_SESSION['derCnx'] = date("Y-m-d H:i:sa");
+
+            header('Location: profil.php');
             }
         }
         else{

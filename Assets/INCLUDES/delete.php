@@ -1,12 +1,12 @@
 <?php 
 require_once 'CrudContacts.php';
 
-if (isset($_GET['id'])) 
+if (isset($_GET['id_contact'])) 
 {
-    echo $id = $_GET['id'];
+    echo $id_contact = $_GET['id_contact'];
 
     $deleteContact = new Contacts();
-    $deleteContact -> supprimerContact($id);
+    $deleteContact -> supprimerContact($id_contact);
 }
 
 header('Location: ../../profil.php');

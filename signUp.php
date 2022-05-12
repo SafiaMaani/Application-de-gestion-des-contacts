@@ -2,18 +2,12 @@
 include 'Assets/INCLUDES/signUp.php';
 
 if (isset($_POST['submit'])) {
-
     $nom = $_POST['nom'];
     $password = $_POST['password'];
      
     $newUser = new SignUp();
     $newUser->register($nom, $password);
-
-
-    header('Location: signIn.php');
-    // echo "<script>alert('Votre inscription a été enregistrée avec succés');</script>";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +28,7 @@ if (isset($_POST['submit'])) {
             <img class="w-75" src="Assets/SVG/Mobile login-pana.svg" alt="">
         </div>
         <div class="w-50 d-flex align-items-center justify-content-center">
-            <form onsubmit="return(validation())" id="form" method="POST" class="d-flex flex-column w-75">
+            <form onsubmit="return(validation())" method="POST" class="d-flex flex-column w-75">
 
                 <h1 class="text-center p-3">Inscription</h1>
 

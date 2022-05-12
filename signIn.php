@@ -2,7 +2,6 @@
 include 'Assets/INCLUDES/login.php';
 session_start();
 
-
 if(isset($_SESSION['id'])){
     header("location: profil.php");
     
@@ -13,12 +12,9 @@ if(isset($_SESSION['id'])){
         $password = $_POST['password'];
         
         $verifierUser = new Login();
-        $verifierUser->signIn($nom ,$password);
-       
-        header('Location: profil.php');
+        $verifierUser->signIn($nom ,$password);       
     }
-    
-
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +35,7 @@ if(isset($_SESSION['id'])){
             <img class="w-75" src="Assets/SVG/Mobile login-cuate.svg" alt="">
         </div>
         <div class="w-50 d-flex align-items-center justify-content-center">
-            <form onsubmit="return(validation())" id="form" method="post"  class="d-flex flex-column w-75">
+            <form onsubmit="return(validation())" method="post"  class="d-flex flex-column w-75">
 
                 <h1 class="text-center p-3">Connexion</h1>
 

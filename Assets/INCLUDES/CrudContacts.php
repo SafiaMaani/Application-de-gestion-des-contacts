@@ -24,9 +24,9 @@ class Contacts extends Connexion{
 			return $contacts;
 		}
 	}
-    public function supprimerContact($id){
+    public function supprimerContact($id_contact){
 
-        $query = "DELETE FROM $this->tableContacts WHERE id_contact = $id";
+        $query = "DELETE FROM $this->tableContacts WHERE id_contact = $id_contact";
         $sql = $this->conn->query($query);
     }
 
